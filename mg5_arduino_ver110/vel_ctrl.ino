@@ -14,9 +14,9 @@ static long count = 1;
 
 void vel_ctrl_execute() {
   // PIDゲイン
-  const double Kp = 0.4; 
-  const double Ki = 0.1; 
-  const double Kd = 0.0; // 通常は 0 のままでよい
+  const double Kp = 0.5; //0.5
+  const double Ki = 0.1; //0.7
+  const double Kd = 0.0;
 
   int pwm_l, pwm_r;
   double dist_curr_l, dist_curr_r, err_curr_l, err_curr_r;

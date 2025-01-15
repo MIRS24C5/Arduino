@@ -34,20 +34,22 @@ typedef struct {
 // 動作周期 [ms]
 #define T_CTRL 10 
 
-// タイヤ半径 [cm] 
-// test_run_ctrl()のSTRモードでの走行距離もともに補正する
-#define R_TIRE     4.0 
+// タイヤ半径 [cm] 3.2
+#define R_TIRE     4
 
-// タイヤ間隔 [cm]
-// test_run_ctrl()のROTモードでの回転角をもとに補正する
-#define D_TIRE    32.0
+// タイヤ間隔 [cm] 25.0
+#define D_TIRE    39
 
 // エンコーダ分解能 (A相立上り/立下りを利用するため2倍)
-#define ENC_RANGE (2048*2) 
+#define ENC_RANGE 4096
 
 // ギア比　（該当するものを選択）
-// 1/14 ギア  
-#define GEAR_RATIO 1.0
+// 1/14 ギア  13 and 212/289
+#define GEAR_RATIO 1
+// 1/19 ギラ  19 and 38/187
+//#define GEAR_RATIO 19.203
+// 1/27 ギラ  26 and 103/121
+//#define GEAR_RATIO 27.851
 
 // 左タイヤに対する右タイヤの回転比
 #define L_R_RATIO  1.0 
