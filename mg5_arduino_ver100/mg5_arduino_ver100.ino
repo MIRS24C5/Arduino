@@ -12,7 +12,14 @@ void setup() {
   raspi_open();
 }
 
+static float ground_dis = 0.0;
+
 void loop() {
+
+  if(Serial.available() > 0){
+    String inStr = Serial.readStringUntil('\n');
+    ground_dis = inStr.toFloat();
+  }
  
   /*
   いずれか一つの関数を有効にする。
@@ -43,7 +50,18 @@ void loop() {
     角度 > 0 ：反時計回り、角度 < 0 ：時計回り　（角速度は常に > 0）
   */
   //test_run_ctrl(STR, 50, 100);
-  test_run_ctrl(ROT, 30, 180);
+  //test_run_ctrl(ROT, 30, 180);
+
+  Serial.printf(ground_dis);
+
+  /*
+  if(ground_dis <= 30){
+    test_run_ctrl(STR, 50, 100);
+  }else{
+    reset();
+    ground_dis = 0;
+  }
+  */
 
   /* バッテリー値の確認 *T
   //test_batt();
