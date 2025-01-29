@@ -10,6 +10,7 @@ void setup() {
   encoder_open();
   motor_open();
   raspi_open();
+  Serial.begin(9600)
 }
 
 static float ground_dis = 0.0;
@@ -52,7 +53,7 @@ void loop() {
   //test_run_ctrl(STR, 50, 100);
   //test_run_ctrl(ROT, 30, 180);
 
-  Serial.printf(ground_dis);
+  Serial.println(ground_dis);
 
   /*
   if(ground_dis <= 30){
