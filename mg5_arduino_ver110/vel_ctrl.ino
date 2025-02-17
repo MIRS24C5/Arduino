@@ -10,6 +10,10 @@ static double vel_ref_l   = 0.0;
 static double vel_ref_r   = 0.0;
 static double vari = 0.0;
 static double varian = 0.0;
+static double dist_curr_l = 0.0;
+static double dist_curr_r = 0.0;
+static double err_curr_l = 0.0;
+static double err_curr_r = 0.0;
 static long count = 1;
 
 void vel_ctrl_execute() {
@@ -19,7 +23,7 @@ void vel_ctrl_execute() {
   const double Kd = 0.0; // 通常は 0 のままでよい
 
   int pwm_l, pwm_r;
-  double dist_curr_l, dist_curr_r, err_curr_l, err_curr_r;
+  //double dist_curr_l, dist_curr_r, err_curr_l, err_curr_r;
 
   // 速度 [cm/s] = 距離の差分 [cm] / (制御周期 [ms] / 1000)
   distance_get(&dist_curr_l, &dist_curr_r);
@@ -64,6 +68,38 @@ void vel_ctrl_get(double *vel_l, double *vel_r) {
 
 void vel_ctrl_get_vari(double *variance) {
   *variance = varian;
+}
+
+void reset(){
+  dist_prev_l = 0.0;
+  dist_prev_r = 0.0;
+  err_prev_l  = 0.0;
+  err_prev_r  = 0.0;
+  err_sum_l   = 0.0;
+  err_sum_r   = 0.0;
+  vel_ref_l   = 0.0;
+  vel_ref_r   = 0.0;
+  count_l = 0;
+  count_r = 0;
+  vel_curr_l  = 0.0;
+  vel_curr_r  = 0.0;
+  vari = 0.0;
+  varian = 0.0;
+  dist_curr_l = 0.0;
+  dist_curr_r = 0.0;
+  err_curr_l = 0.0;
+  err_curr_r = 0.0;
+  count = 1;
+  run_state_t run_state = STP;
+  speed_ref  = 0.0;
+  speed_curr = 0.0;
+  dist_ref   = 0.0;
+  dist_curr  = 0.0;
+  er  = 0.0 , er_d = 0.0 ;
+  er_sum  = 0.0;
+  er_prev  = 0.0;
+  motor_set(0, 0);
+  encoder_reset();
 }
 
 void vel_ctrl_reset() {

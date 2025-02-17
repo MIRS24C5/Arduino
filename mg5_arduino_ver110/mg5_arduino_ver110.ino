@@ -23,7 +23,7 @@ void loop() {
     String inStr = Serial.readStringUntil('\n');
     ground_dis = inStr.toFloat();
   }
- 
+  
   /*
   いずれか一つの関数を有効にする。
   どの関数も無限ループになっている。しがたってこの loop 関数は実際にはループしない。
@@ -55,12 +55,19 @@ void loop() {
   //test_run_ctrl(STR, 10, 40);
   //test_run_ctrl(ROT, 45, 90);
 
-  Serial.println(ground_dis);
-
-  if(ground_dis <= 30){
+  //Serial.println(ground_dis);
+  
+  if(ground_dis <= 30 && ground_dis >= 0){
+    //Serial.println("x");
     test_run_ctrl(STR, 5, 5);
+    //Serial.println("a");
   }
-
+  reset();
+  //ground_dis = 0.0;
+  delay(1000);
+  //Serial.println("b");
+  //Serial.println("done");
+  
   /* バッテリー値の確認 */
   //test_batt();
 

@@ -46,11 +46,11 @@ void test_vel_ctrl(double vel_l, double vel_r) {
     if (i >= 10) {
       vel_ctrl_get(&vel_l, &vel_r);
       vel_ctrl_get_vari(&variance);
-     sprintf(str, "vel_l = %s, vel_r = %s   variance= %s \n", 
-              dtostrf(vel_l, 6, 1, str_l),
-              dtostrf(vel_r, 6, 1, str_r),
-              dtostrf(variance, 6, 1, str_v));
-      Serial.print(str);
+     //sprintf(str, "vel_l = %s, vel_r = %s   variance= %s \n", 
+            //  dtostrf(vel_l, 6, 1, str_l),
+            //  dtostrf(vel_r, 6, 1, str_r),
+            //  dtostrf(variance, 6, 1, str_v));
+      //Serial.print(str);
       i = 0;
     }
     i++;
@@ -80,7 +80,7 @@ void test_run_ctrl(run_state_t state, double speed, double dist) {
       i = 0;
     }
     i++;
-    //if( state == STP ) break;
+    if( state == STP ) break;
     delay(T_CTRL);
   }
 }
